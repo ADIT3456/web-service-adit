@@ -16,12 +16,13 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { getAllUsers } from '../api.js';
 
 const users = ref([]);
 
 onMounted(async () => {
-  const response = await axios.get('https://reqres.in/api/users');
+  // Menggunakan fungsi getAllUsers dari api.js
+  const response = await getAllUsers();
   users.value = response.data.data;
 });
 </script>

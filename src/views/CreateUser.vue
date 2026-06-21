@@ -24,13 +24,14 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
+import { createUser } from '../api.js';
 
 const form = ref({ name: '', job: '' });
 const createdUser = ref(null);
 
 const submitUser = async () => {
-  const response = await axios.post('https://reqres.in/api/users', form.value);
+  // Menggunakan fungsi createUser dari api.js
+  const response = await createUser(form.value);
   createdUser.value = response.data;
 };
 </script>

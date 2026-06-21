@@ -15,14 +15,15 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import axios from 'axios';
+import { getUserById } from '../api.js';
 
 const route = useRoute();
 const user = ref(null);
 
 onMounted(async () => {
   const id = route.params.id;
-  const response = await axios.get(`https://reqres.in/api/users/${id}`);
+  // Menggunakan fungsi getUserById dari api.js
+  const response = await getUserById(id);
   user.value = response.data.data;
 });
 </script>
